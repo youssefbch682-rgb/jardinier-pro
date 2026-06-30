@@ -782,4 +782,231 @@ nav.scrolled .burger span {
   .nav-cta { display: none; }
   .burger { display: flex; }
 }
+/* =====================
+   GALERIE — VRAIES PHOTOS
+   ===================== */
+
+.real-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Filtres */
+.real-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  background: transparent;
+  color: var(--texte-doux);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--vert-mousse);
+  color: var(--vert-mousse);
+}
+
+.filter-btn.active {
+  background: var(--vert-profond);
+  border-color: var(--vert-profond);
+  color: var(--blanc);
+}
+
+/* Grille étendue à 6 items */
+.real-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+  height: auto;
+}
+
+.real-item {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.real-item.hidden {
+  display: none;
+}
+
+.real-item.fading {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+/* Image réelle dans la grille */
+.real-img {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 250px;
+}
+
+.real-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  min-height: 250px;
+}
+
+.real-item.real-big .real-img {
+  min-height: 510px;
+}
+
+.real-item.real-big .real-img img {
+  min-height: 510px;
+}
+
+.real-img:hover img {
+  transform: scale(1.06);
+}
+
+/* =====================
+   LIGHTBOX
+   ===================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-img-wrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 2px;
+  display: block;
+  transform: scale(0.95);
+  transition: transform 0.35s ease;
+}
+
+.lightbox.open .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.lightbox-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terre);
+}
+
+.lightbox-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--blanc);
+  margin: 0.3rem 0 0.2rem;
+}
+
+.lightbox-loc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--blanc);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: var(--terre);
+  border-color: var(--terre);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--blanc);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--terre);
+  border-color: var(--terre);
+}
+
+@media (max-width: 900px) {
+  .real-grid {
+    grid-template-columns: 1fr;
+  }
+  .real-item.real-big .real-img,
+  .real-item.real-big .real-img img {
+    min-height: 280px;
+  }
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+}
 
