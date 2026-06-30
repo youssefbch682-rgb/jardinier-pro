@@ -167,10 +167,17 @@
     <div class="real-header">
       <p class="section-label">Mon travail</p>
       <h2>Réalisations</h2>
+      <div class="real-filters">
+        <button class="filter-btn active" data-filter="all">Tout</button>
+        <button class="filter-btn" data-filter="creation">Création</button>
+        <button class="filter-btn" data-filter="potager">Potager</button>
+        <button class="filter-btn" data-filter="taille">Taille</button>
+      </div>
     </div>
     <div class="real-grid">
-      <div class="real-item real-big">
-        <div class="real-img" style="background: linear-gradient(135deg, #2d5a3d, #1a3320);">
+      <div class="real-item real-big" data-cat="creation">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Jardin contemporain" loading="lazy" />
           <div class="real-overlay">
             <span class="real-tag">Création</span>
             <h3>Jardin contemporain</h3>
@@ -178,8 +185,9 @@
           </div>
         </div>
       </div>
-      <div class="real-item">
-        <div class="real-img" style="background: linear-gradient(135deg, #4a7c5f, #2d5a3d);">
+      <div class="real-item" data-cat="potager">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" alt="Jardin nourricier" loading="lazy" />
           <div class="real-overlay">
             <span class="real-tag">Potager</span>
             <h3>Jardin nourricier</h3>
@@ -187,13 +195,59 @@
           </div>
         </div>
       </div>
-      <div class="real-item">
-        <div class="real-img" style="background: linear-gradient(135deg, #c4824a, #a06030);">
+      <div class="real-item" data-cat="taille">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80" alt="Haie de charmes" loading="lazy" />
           <div class="real-overlay">
-            <span class="real-tag">Élagage</span>
+            <span class="real-tag">Taille</span>
             <h3>Haie de charmes</h3>
             <p>Fontainebleau · 2023</p>
           </div>
+        </div>
+      </div>
+      <div class="real-item" data-cat="creation">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Terrasse végétalisée" loading="lazy" />
+          <div class="real-overlay">
+            <span class="real-tag">Création</span>
+            <h3>Terrasse végétalisée</h3>
+            <p>Saint-Germain · 2024</p>
+          </div>
+        </div>
+      </div>
+      <div class="real-item" data-cat="potager">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=600&q=80" alt="Potager bio" loading="lazy" />
+          <div class="real-overlay">
+            <span class="real-tag">Potager</span>
+            <h3>Potager bio surélevé</h3>
+            <p>Massy · 2023</p>
+          </div>
+        </div>
+      </div>
+      <div class="real-item" data-cat="taille">
+        <div class="real-img">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" alt="Taille topiaire" loading="lazy" />
+          <div class="real-overlay">
+            <span class="real-tag">Taille</span>
+            <h3>Topiaires sculptés</h3>
+            <p>Versailles · 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Fermer">✕</button>
+      <button class="lightbox-prev" aria-label="Précédent">‹</button>
+      <button class="lightbox-next" aria-label="Suivant">›</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" class="lightbox-img" />
+        <div class="lightbox-caption">
+          <span class="lightbox-tag"></span>
+          <h3 class="lightbox-title"></h3>
+          <p class="lightbox-loc"></p>
         </div>
       </div>
     </div>
@@ -278,3 +332,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
