@@ -150,3 +150,28 @@ function handleSubmit(e) {
   btn.disabled = true;
   setTimeout(() => e.target.reset(), 500);
 }
+// =====================
+// BURGER MENU MOBILE
+// =====================
+const burger = document.querySelector(".burger");
+const mobileMenu = document.querySelector(".mobile-menu");
+const mobileLinks = document.querySelectorAll(".mobile-link, .mobile-cta");
+
+burger.addEventListener("click", () => {
+  const isOpen = burger.classList.toggle("open");
+  mobileMenu.classList.toggle("open");
+  burger.setAttribute("aria-expanded", isOpen);
+  mobileMenu.setAttribute("aria-hidden", !isOpen);
+  document.body.style.overflow = isOpen ? "hidden" : "";
+});
+
+mobileLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    burger.classList.remove("open");
+    mobileMenu.classList.remove("open");
+    burger.setAttribute("aria-expanded", false);
+    mobileMenu.setAttribute("aria-hidden", true);
+    document.body.style.overflow = "";
+  });
+});
+
