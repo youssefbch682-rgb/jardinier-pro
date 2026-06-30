@@ -362,3 +362,11 @@ footer {
   border-radius: 4px;
   box-shadow: 0 20px 60px rgba(26, 51, 32, 0.2);
 }
+
+
+/* === NAV SCROLLED === */
+nav.scrolled {
+  padding: 0.8rem 6vw;
+  box-shadow: 0 2px 20px rgba(26, 51, 32, 0.1);
+}
+nav { transition: padding 0.3s ease, box-shadow 0.3s ease; }
