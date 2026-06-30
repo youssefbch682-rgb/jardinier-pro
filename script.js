@@ -6,12 +6,33 @@ const lenis = new Lenis({
   easing: (t) => 1 - Math.pow(1 - t, 3),
   smoothWheel: true,
   syncTouch: false,
+  wheelMultiplier: 1,
+  touchMultiplier: 2,
+  infinite: false,
 });
 
-// Un seul RAF propre
-gsap.ticker.add((time) => lenis.raf(time * 1000));
-gsap.ticker.lagSmoothing(0);
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 lenis.on('scroll', ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy(document.body, {
+  scrollTop(value) {
+    if (arguments.length) {
+      lenis.scrollTo(value, { immediate: true });
+    }
+    return lenis.scroll;
+  },
+  getBoundingClientRect() {
+    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+  },
+});
+
+ScrollTrigger.addEventListener('refresh', () => lenis.resize());
+ScrollTrigger.refresh();
 
 // =====================
 // CURSOR CUSTOM — optimisé avec RAF unique
@@ -19,7 +40,6 @@ lenis.on('scroll', ScrollTrigger.update);
 const cursor = document.querySelector('.cursor');
 const follower = document.querySelector('.cursor-follower');
 let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
-let rafId;
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
@@ -31,7 +51,7 @@ function animateFollower() {
   followerX += (mouseX - followerX) * 0.12;
   followerY += (mouseY - followerY) * 0.12;
   gsap.set(follower, { x: followerX, y: followerY });
-  rafId = requestAnimationFrame(animateFollower);
+  requestAnimationFrame(animateFollower);
 }
 animateFollower();
 
@@ -166,3 +186,4 @@ function handleSubmit(e) {
   btn.disabled = true;
   setTimeout(() => e.target.reset(), 500);
 }
+
