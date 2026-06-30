@@ -174,4 +174,105 @@ mobileLinks.forEach(link => {
     document.body.style.overflow = "";
   });
 });
+// =====================
+// FILTRES GALERIE
+// =====================
+const filterBtns = document.querySelectorAll(".filter-btn");
+const realItems = document.querySelectorAll(".real-item");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Mettre à jour le bouton actif
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.getAttribute("data-filter");
+
+    realItems.forEach(item => {
+      const cat = item.getAttribute("data-cat");
+      // "all" affiche tout, sinon on compare la catégorie
+      if (filter === "all" || cat === filter) {
+        item.classList.remove("hidden");
+        // Petit délai pour lanimation
+        setTimeout(() => item.classList.remove("fading"), 10);
+      } else {
+        item.classList.add("fading");
+        setTimeout(() => item.classList.add("hidden"), 400);
+      }
+    });
+  });
+});
+
+// =====================
+// LIGHTBOX
+// =====================
+const lightbox = document.getElementById("lightbox");
+const lbImg = lightbox.querySelector(".lightbox-img");
+const lbTag = lightbox.querySelector(".lightbox-tag");
+const lbTitle = lightbox.querySelector(".lightbox-title");
+const lbLoc = lightbox.querySelector(".lightbox-loc");
+const lbClose = lightbox.querySelector(".lightbox-close");
+const lbPrev = lightbox.querySelector(".lightbox-prev");
+const lbNext = lightbox.querySelector(".lightbox-next");
+
+let currentIndex = 0;
+
+// Récupérer les données de chaque carte
+function getItems() {
+  return [...document.querySelectorAll(".real-item:not(.hidden) .real-img")];
+}
+
+function openLightbox(index) {
+  const items = getItems();
+  currentIndex = index;
+  const item = items[index];
+
+  lbImg.src = item.querySelector("img").src;
+  lbImg.alt = item.querySelector("img").alt;
+  lbTag.textContent = item.querySelector(".real-tag").textContent;
+  lbTitle.textContent = item.querySelector("h3").textContent;
+  lbLoc.textContent = item.querySelector("p").textContent;
+
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", false);
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", true);
+  document.body.style.overflow = "";
+}
+
+function navigate(dir) {
+  const items = getItems();
+  currentIndex = (currentIndex + dir + items.length) % items.length;
+  openLightbox(currentIndex);
+}
+
+// Ouvrir au clic sur une carte
+document.querySelectorAll(".real-img").forEach((img, i) => {
+  img.addEventListener("click", () => {
+    const visibleItems = getItems();
+    const idx = visibleItems.indexOf(img);
+    if (idx !== -1) openLightbox(idx);
+  });
+});
+
+lbClose.addEventListener("click", closeLightbox);
+lbPrev.addEventListener("click", () => navigate(-1));
+lbNext.addEventListener("click", () => navigate(1));
+
+// Fermer en cliquant le fond
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Navigation clavier
+document.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") navigate(-1);
+  if (e.key === "ArrowRight") navigate(1);
+});
 
