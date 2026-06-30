@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vert & Soin — Jardinier Paysagiste</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="logo">Vert & Soin</span>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Jardinier paysagiste — Île-de-France</p>
+      <h1>Chaque jardin<br /><em>mérite sa propre vie.</em></h1>
+      <p class="hero-sub">Création, entretien et taille sur-mesure. Je travaille le vivant avec patience et précision depuis 15 ans.</p>
+      <a href="#contact" class="btn">Demander un devis gratuit</a>
+    </div>
+    <div class="hero-visual">
+      <div class="leaf leaf1"></div>
+      <div class="leaf leaf2"></div>
+      <div class="leaf leaf3"></div>
+      <div class="circle-bg"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <p class="section-label">Ce que je fais</p>
+    <h2>Services</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <h3>Entretien régulier</h3>
+        <p>Tonte, taille, désherbage et soins saisonniers pour garder votre jardin impeccable toute l'année.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪴</span>
+        <h3>Création paysagère</h3>
+        <p>Conception de jardins de A à Z : plans, plantations, allées, bassins et structures végétales.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✂️</span>
+        <h3>Taille & élagage</h3>
+        <p>Arbres fruitiers, haies, arbustes et topiaires. Un travail précis qui respecte la nature de chaque plante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REALISATIONS -->
+  <section id="realisations" class="realisations">
+    <p class="section-label">Mon travail</p>
+    <h2>Quelques réalisations</h2>
+    <div class="gallery">
+      <div class="gallery-item big">
+        <div class="placeholder-img">Jardin contemporain — Versailles</div>
+      </div>
+      <div class="gallery-item">
+        <div class="placeholder-img">Potager familial — Rambouillet</div>
+      </div>
+      <div class="gallery-item">
+        <div class="placeholder-img">Haie de charmes — Fontainebleau</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGES -->
+  <section class="temoignages">
+    <blockquote>
+      <p>"Luc a transformé notre friche en un jardin où on passe nos week-ends entiers. Un vrai artisan du végétal."</p>
+      <cite>— Marie & Thomas D., Massy</cite>
+    </blockquote>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <p class="section-label">Me joindre</p>
+    <h2>Parlons de votre jardin</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Disponible du lundi au samedi, 8h–19h.</p>
+        <p><strong>📞</strong> 06 12 34 56 78</p>
+        <p><strong>📧</strong> luc@vertetsoins.fr</p>
+        <p><strong>📍</strong> Île-de-France et environs</p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Votre nom" required />
+        <input type="email" placeholder="Votre email" required />
+        <textarea placeholder="Décrivez votre projet..." rows="4" required></textarea>
+        <button type="submit" class="btn">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Vert & Soin — Luc Martin, Jardinier Paysagiste</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
